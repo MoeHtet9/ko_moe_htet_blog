@@ -23,6 +23,7 @@ return new class extends Migration
                 ->on('roles')
                 ->onDelete('cascade');
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
 
