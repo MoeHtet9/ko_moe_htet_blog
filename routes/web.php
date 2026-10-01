@@ -9,3 +9,22 @@ Route::get('detail/{id}',[App\Http\Controllers\FrontController::class, 'detail']
 Route::get('category/{id}',[App\Http\Controllers\FrontController::class, 'postsCategory'])->name('posts.category');
 
 Route::get('/admin',[App\Http\Controllers\DashboardController::class, 'index'])->name('admin-index');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
