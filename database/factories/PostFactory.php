@@ -21,8 +21,8 @@ class PostFactory extends Factory
             'title' => fake()->word(),
             'description' => fake()->paragraph(),
             'image' => fake()->imageUrl(),
-            'category_id' => rand(31, 40),
-            'user_id' => rand(1,5),
+            'category_id' => rand(1, 10),
+            'user_id' => rand(2,20),
         ];
     }
 }
