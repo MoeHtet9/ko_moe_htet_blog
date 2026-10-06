@@ -4,7 +4,7 @@
         <div class="container-fluid px-4">
             <div class="my-3">
                 <h1 class="mt-4 d-inline">Users</h1>
-                <a href="" class="btn btn-primary float-end">New User</a>
+                <a href="{{route('admin.users.create')}}" class="btn btn-primary float-end">New User</a>
             </div>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Dashboard</a></li>
@@ -44,7 +44,7 @@
                                     <td>{{$i++}}</td>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
-                                    <td>{{$user->role_id}}</td>
+                                    <td>{{$user->role->name}}</td>
                                     <td>
                                         <a href="#" class="btn btn-primary">Edit</a>
                                         <form action="" method="POST" class="d-inline">

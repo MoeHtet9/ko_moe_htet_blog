@@ -4,7 +4,7 @@
         <div class="container-fluid px-4">
             <div class="my-3">
                 <h1 class="mt-4 d-inline">Posts</h1>
-                <a href="" class="btn btn-primary float-end">Create Post</a>
+                <a href="{{route('admin.posts.create')}}" class="btn btn-primary float-end">Create Post</a>
             </div>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Dashboard</a></li>
@@ -53,8 +53,8 @@
                                             <img src="{{$post->image}}" alt="..." width="100">
                                         @endif
                                     </td>
-                                    <td>{{$post->category_id}}</td>
-                                    <td>{{$post->user_id}}</td>
+                                    <td>{{$post->category->name}}</td>
+                                    <td>{{$post->user->name}}</td>
                                     <td>
                                         <a href="#" class="btn btn-primary">Edit</a>
                                         <form action="" method="POST" class="d-inline">

@@ -11,7 +11,7 @@
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1">{{$post->title}}</h1>
                             <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">Posted on {{$post->created_at}} by Start Bootstrap</div>
+                            <div class="text-muted fst-italic mb-2">Posted on {{$post->created_at}} by {{$post->user->name}}</div>
                             <!-- Post categories-->
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{ $post->category->name }}</a>
                         </header>

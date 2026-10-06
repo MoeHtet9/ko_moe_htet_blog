@@ -4,7 +4,7 @@
         <div class="container-fluid px-4">
             <div class="my-3">
                 <h1 class="mt-4 d-inline">Roles</h1>
-                <a href="" class="btn btn-primary float-end">Create Role</a>
+                <a href="{{route('admin.roles.create')}}" class="btn btn-primary float-end">Create Role</a>
             </div>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Dashboard</a></li>
