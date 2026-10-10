@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Requests\UserRequest;
 class UserController extends Controller
 {
     /**
@@ -27,9 +28,14 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        // dd($request);
+        $user = User::create($request->all());
+
+        $user->save();
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -45,7 +51,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -53,7 +60,12 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::find($id);
+        $user->update($request->all());
+
+        $user->save();
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -61,6 +73,9 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect()->route('admin.users.index');
     }
 }

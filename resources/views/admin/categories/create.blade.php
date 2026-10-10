@@ -17,12 +17,14 @@
             Create Category
         </div>
         <div class="card-body">
-        <form action="" method="post" enctype="multipart/form-data">
-            
+        <form action="{{route('admin.categories.store')}}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="mb-3">
-                <label for="code-no" class="form-label">Category Name</label>
-                <input type="text" class="form-control" name="code_no" id="code-no" >
-               
+                <label for="name" class="form-label">Category Name</label>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{old('name')}}">
+                @error('name')
+                    <div class="text-danger sm">{{$message}}</div>
+                @enderror
             </div>
             <div class="d-grid gap-2">
                 <button class="btn btn-primary" type="submit">Save</button>

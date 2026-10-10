@@ -17,30 +17,48 @@
             Create Post
         </div>
         <div class="card-body">
-        <form action="" method="post" enctype="multipart/form-data">
-            
+        <form action="{{route('admin.posts.store')}}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="mb-3">
-                <label for="code-no" class="form-label">Title</label>
-                <input type="text" class="form-control" name="code_no" id="code-no" >
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value="{{old('title')}}">
                
-            </div>
-            <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
-                <input type="file" accept="image/*" class="form-control" name="image" id="image">
-            </div>
-            <div class="mb-3">
-                <label for="category" class="form-label">Category</label>
-                <select class="form-select" name="category_id">
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                    <option value="">Choose Category</option>
-                </select>
+                @error('title')
+                    <div class="text-danger sm">{{$message}}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="description">Description</label>
-                <textarea name="description" id="description" class="form-control"></textarea>
+                <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror">{{old('description')}}</textarea>
+
+                @error('description')
+                    <div class="text-danger sm">{{$message}}</div>
+                @enderror
             </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input type="file" accept="image/*" class="form-control @error('image') is-invalid @enderror" name="image" id="image">
+
+                @error('image')
+                    <div class="text-danger sm">{{$message}}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-select @error('category_id') is-invalid @enderror" name="category_id">
+                    <option value="">Choose Category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+
+                    @error('category_id')
+                        <div class="text-danger sm">{{$message}}</div>
+                    @enderror
+                </select>
+            </div>
+            <!-- user_id -->
+            <input type="hidden" class="form-control" name="user_id" id="user_id" value="2">
+            <!-- user id end -->
             <div class="d-grid gap-2">
                 <button class="btn btn-primary" type="submit">Save</button>
             </div>

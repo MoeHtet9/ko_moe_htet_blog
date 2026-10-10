@@ -17,28 +17,35 @@
             Create User
         </div>
         <div class="card-body">
-        <form action="" method="post" enctype="multipart/form-data">
-            
+        <form action="{{route('admin.users.store')}}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="mb-3">
-                <label for="code-no" class="form-label">Name</label>
-                <input type="text" class="form-control" name="code_no" id="code-no" >
-               
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{old('name')}}">
+                @error('name')
+                    <div class="text-danger sm">{{$message}}</div>
+                @enderror
             </div>
             <div class="mb-3">
-                <label for="name" class="form-label">Email</label>
-                <input type="text" class="form-control" name="name" id="name">
-            </div>
-            <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
-                <input type="file" accept="image/*" class="form-control" name="image" id="image">
-            </div>
-            <div class="mb-3">
-                <label for="price" class="form-label">Role</label>
-                <input type="text" class="form-control" name="price" id="price">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" name="email" id="email" value="{{old('email')}}">
+                @error('email')
+                    <div class="text-danger sm">{{$message}}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password" id="password">
+                <input type="password" class="form-control @error('name') is-invalid @enderror" name="password" id="password">
+                @error('password')
+                    <div class="text-danger sm">{{$message}}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="role_id" class="form-label">Role</label>
+                <select class="form-select" name="role_id">
+                    <option value="2">Author</option>
+                    <option value="1">Admin</option>
+                </select>
             </div>
             <div class="d-grid gap-2">
                 <button class="btn btn-primary" type="submit">Save</button>

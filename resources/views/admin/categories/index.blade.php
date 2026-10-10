@@ -40,10 +40,8 @@
                                     <td>{{$i++}}</td>
                                     <td>{{$category->name}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-primary">Edit</a>
-                                        <form action="" method="POST" class="d-inline">
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
+                                        <a href="{{route('admin.categories.edit',$category->id)}}" class="btn btn-warning">Edit</a>
+                                        <a class="btn btn-danger delete" data-id="{{$category->id}}">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -53,4 +51,37 @@
             </div>
         </div>
     </main>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-light">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete...</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h3>Are you sure delete?</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <form action="" method="post" id="deleteForm">
+            @csrf
+            @method('delete')
+            <button class="btn btn-danger" type="submit">Yes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('tbody').on('click','.delete',function() {
+            $('#deleteModal').modal('show');
+            let id = $(this).data('id');
+            $('#deleteForm').attr('action',`categories/${id}`);
+        })
+    })
+</script>
 @endsection
