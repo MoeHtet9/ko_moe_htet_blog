@@ -51,7 +51,6 @@
                                         <tr>
                                             <th>No.</th>
                                             <th>Title</th>
-                                            <th>Description</th>
                                             <th>Image</th>
                                             <th>Category</th>
                                             <th>User</th>
@@ -62,7 +61,6 @@
                                         <tr>
                                             <th>No.</th>
                                             <th>Title</th>
-                                            <th>Description</th>
                                             <th>Image</th>
                                             <th>Category</th>
                                             <th>User</th>
@@ -77,7 +75,6 @@
                                             <tr>
                                                 <td>{{$i++}}</td>
                                                 <td>{{$post->title}}</td>
-                                                <td>{{Str::limit($post->description, 30)}}</td>
                                                 <td>
                                                     @if ($post->image)
                                                         <img src="{{$post->image}}" alt="..." width="100">

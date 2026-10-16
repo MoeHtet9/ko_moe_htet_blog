@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="text-center my-5">
                     <h1 class="fw-bolder">Welcome to Blog Home!</h1>
-                    <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
+                    <p class="lead mb-0">Letters & Shot Note & Knowledge Sharing</p>
                 </div>
             </div>
         </header>
@@ -29,6 +29,7 @@
                     <div class="row">
                             <!-- Blog post-->
                             @foreach($posts as $post)
+                            @if($post)
                             <div class="card m-2 col-md-5">
                                 <a href="#!"><img class="card-img-top" src="{{$post->image}}" alt="..." /></a>
                                 <div class="card-body">
@@ -39,9 +40,11 @@
                                     <a class="btn btn-primary" href="{{route('detail',$post->id)}}">Read more →</a>
                                 </div>
                             </div>
+                            @else
+                            <h5>Data Not Found</h5>
+                            @endif
                             @endforeach
 
-                            {{$posts->links()}}
                     </div>
                 </div>
                 <!-- Side widgets-->

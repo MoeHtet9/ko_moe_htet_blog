@@ -7,10 +7,12 @@
                 <div class="col-lg-8">
                     <!-- Nested row for non-featured blog posts-->
                     <div class="row">
-                            <!-- Blog post-->
-                            @foreach($postsCategory as $post)
+                        <!-- Blog post-->
+                        @if($postsCategory->isNotEmpty())
+                        @foreach($postsCategory as $post)
+                        
                             <div class="card m-2 col-md-5">
-                                <a href="#!"><img class="card-img-top" src="{{$post->image}}" alt="..." /></a>
+                                <img class="card-img-top" src="{{$post->image}}" alt="..." />
                                 <div class="card-body">
                                     <a href="{{route('posts.category',$post->category_id)}}" class="btn btn-sm btn-secondary text-white">{{ $post->category->name }}</a>
                                     <div class="small text-muted">{{$post->created_at}}</div>
@@ -19,9 +21,12 @@
                                     <a class="btn btn-primary" href="{{route('detail',$post->id)}}">Read more →</a>
                                 </div>
                             </div>
-                            @endforeach
+                        
+                        @endforeach
 
-                            {{$postsCategory->links()}}
+                        @else
+                            <h5 class="container text-center mt-5 pt-5">Data Not Found</h5>
+                        @endif
                     </div>
                 </div>
                 <!-- Side widgets-->
